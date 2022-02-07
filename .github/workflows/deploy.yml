@@ -21,9 +21,9 @@ jobs:
         run: |
           npm install
           sudo apt-get update
-          sudo apt-get install -y wget python xz-utils xdg-utils libnss3 libgbm1
+          sudo apt-get install -y wget python xz-utils xdg-utils libnss3
           sudo apt-get clean
-          sudo wget --no-check-certificate -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
+          sudo wget --no-check-certificate -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
           echo "/opt/calibre" >> $GITHUB_PATH
       - name: Build docs
         run: npx honkit build
